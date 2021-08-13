@@ -29,7 +29,7 @@ implementation 'io.rsocket.kotlin:rsocket-transport-ktor-client:0.13.1'
 implementation "io.ktor:ktor-client-cio:1.6.1"
 ```
 
-Both of Ktor and Netty had given me the same error. The logcat is the following
+Both Ktor and Netty had given me the same error. The logcat is the following
 
 Android:
 ```
