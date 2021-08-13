@@ -6,33 +6,33 @@ I get the ApplicationErrorException: No handler for destination '' trying to con
 
 On the server side I use:
 
-<code>
+```
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-rsocket</artifactId>
 </dependency>
-</code>
+```
 
 On the clint I used both:
 
-<code>
+```
 implementation 'io.rsocket:rsocket-core:1.1.1'
 implementation 'io.rsocket:rsocket-transport-netty:1.1.1'
-</code>
+```
 
 and
 
-<code>
+```
 implementation 'io.rsocket.kotlin:rsocket-core:0.13.1'
 implementation 'io.rsocket.kotlin:rsocket-transport-ktor:0.13.1'
 implementation 'io.rsocket.kotlin:rsocket-transport-ktor-client:0.13.1'
 implementation "io.ktor:ktor-client-cio:1.6.1"
-</code>
+```
 
 Both of Ktor and Netty had given me the same error. The logcat is the following
 
 Android:
-<code>
+```
 ApplicationErrorException (0x201): No handler for destination ''
         at io.rsocket.exceptions.Exceptions.from(Exceptions.java:76)
         at io.rsocket.core.RSocketRequester.handleFrame(RSocketRequester.java:261)
@@ -80,10 +80,10 @@ ApplicationErrorException (0x201): No handler for destination ''
         at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:738)
         at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
         at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
-</code>
+```
 
 Here is the controller code, used on the back-end:
-<code>
+```
 @Controller
 class MainController {
 
@@ -93,10 +93,10 @@ class MainController {
     @MessageMapping("name")
     fun helloName(name: String) = "Hello, $name!"
 }
-</code>
+```
 
 The code I used to connect from Android, using 'io.rsocket:rsocket-transport-netty:1.1.1' is the following:
-<code>
+```
     private fun connect(route: String, message: String): String? = runBlocking {
         withContext(Dispatchers.IO) {
 
@@ -124,10 +124,10 @@ The code I used to connect from Android, using 'io.rsocket:rsocket-transport-net
 
         }
     }
-</code>
+```
 
 The code used to connect with Ktor is the the following:
-<code>
+```
 	private fun connect(route: String, message: String): String? = runBlocking {
         val client = HttpClient(CIO) { //create and configure ktor client
             install(WebSockets)
@@ -173,18 +173,15 @@ The code used to connect with Ktor is the the following:
             "RSocket cannot connect: ${e.asString()}"
         }
     }
-</code>
+```
 
 As I mentioned above, both approaches lead to the same result: No handler for destination ''
 Worth to mention, this problem is absent when I use the same routing from another Spring Boot client.
 
-Have anyone any clue what am I doing wrong?
-I would be happy if someone points me, where I'm mistaken. Thanks in advance.
-
-I created sample projects on the github to help reproduce this error: github.com/**
+I created these sample projects to help reproduce this error.
 
 <strong>Steps to reproduce:</strong>
-1. Clone or download the github project <link>
+1. Clone or download the github project https://github.com/mr-nexter/rsocket-android-spring
 2. Run the spring boot server
 3. Edit the hostUrl variable providing the the correct IP-address of your PC (!)
 4. Run the Android app and click the 'Send' button
@@ -192,7 +189,7 @@ I created sample projects on the github to help reproduce this error: github.com
 If you wish to switch to Ktor from Netty on Android, you can use the commented method 
 
 Also when rsocket is disposed on the client I get the following error on the server-side:
-<code>
+```
 Caused by: java.util.concurrent.CancellationException: Disposed
 	at io.rsocket.internal.UnboundedProcessor.dispose(UnboundedProcessor.java:545) ~[rsocket-core-1.1.1.jar:na]
 	at io.rsocket.transport.netty.WebsocketDuplexConnection.doOnClose(WebsocketDuplexConnection.java:72) ~[rsocket-transport-netty-1.1.1.jar:na]
@@ -261,4 +258,4 @@ Caused by: java.util.concurrent.CancellationException: Disposed
 	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.66.Final.jar:4.1.66.Final]
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.66.Final.jar:4.1.66.Final]
 	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-</code>
+```
