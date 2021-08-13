@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RSocketTester</string>
+    <string name="address_to_connect">ws://192.168.0.1</string>
+    <string name="result">Result</string>
+    <string name="send">Send</string>
+    <string name="message">Some message</string>
+    <string name="retry">Retry</string>
+</resources>
