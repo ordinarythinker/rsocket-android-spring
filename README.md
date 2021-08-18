@@ -1,10 +1,8 @@
 # rsocket-android-spring
 
-<strong>RSocket Android + Spring Boot</strong> back-end routing error: No handler for destination ''
+<strong>RSocket Android + Spring Boot sample project</strong>
 
-I get the ApplicationErrorException: No handler for destination '' trying to connet to my web server (spring boot) from android code using RSocket. As a transport I use websockets.
-
-On the server side I use:
+On the server side is used:
 
 ```
 <dependency>
@@ -13,24 +11,12 @@ On the server side I use:
 </dependency>
 ```
 
-On the clint I used both:
+On the client is used:
 
 ```
 implementation 'io.rsocket:rsocket-core:1.1.1'
 implementation 'io.rsocket:rsocket-transport-netty:1.1.1'
 ```
-
-and
-
-```
-implementation 'io.rsocket.kotlin:rsocket-core:0.13.1'
-implementation 'io.rsocket.kotlin:rsocket-transport-ktor:0.13.1'
-implementation 'io.rsocket.kotlin:rsocket-transport-ktor-client:0.13.1'
-implementation "io.ktor:ktor-client-cio:1.6.1"
-```
-
-Both Ktor and Netty had given me the same error. The logcat is the following
-
 Android:
 ```
 ApplicationErrorException (0x201): No handler for destination ''
