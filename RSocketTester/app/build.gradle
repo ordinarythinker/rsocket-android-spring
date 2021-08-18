@@ -48,11 +48,6 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'io.reactivex:rxjava:1.1.8'
 
-    /*implementation 'io.rsocket.kotlin:rsocket-core:0.13.1'
-    implementation 'io.rsocket.kotlin:rsocket-transport-ktor:0.13.1'
-    implementation 'io.rsocket.kotlin:rsocket-transport-ktor-client:0.13.1'
-    implementation "io.ktor:ktor-client-cio:1.6.1"*/
-
     implementation 'io.rsocket:rsocket-core:1.1.1'
     implementation 'io.rsocket:rsocket-transport-netty:1.1.1'
 

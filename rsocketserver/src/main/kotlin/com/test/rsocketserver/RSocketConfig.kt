@@ -21,11 +21,4 @@ class RSocketConfig {
                 .decoders { decoders: MutableList<Decoder<*>?> -> decoders.add(Jackson2JsonDecoder()) }
                 .build()
     }
-
-    /*@Bean
-    fun rSocketRequester(@Autowired builder: RSocketRequester.Builder, rSocketStrategies: RSocketStrategies): RSocketRequester {
-        return builder.rsocketStrategies(rSocketStrategies)
-                .dataMimeType(MediaType.APPLICATION_JSON)
-                .websocket(URI.create("ws://localhost:6565/"))
-    }*/
 }
