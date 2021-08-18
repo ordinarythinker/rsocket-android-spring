@@ -17,56 +17,6 @@ On the client is used:
 implementation 'io.rsocket:rsocket-core:1.1.1'
 implementation 'io.rsocket:rsocket-transport-netty:1.1.1'
 ```
-Android:
-```
-ApplicationErrorException (0x201): No handler for destination ''
-        at io.rsocket.exceptions.Exceptions.from(Exceptions.java:76)
-        at io.rsocket.core.RSocketRequester.handleFrame(RSocketRequester.java:261)
-        at io.rsocket.core.RSocketRequester.handleIncomingFrames(RSocketRequester.java:211)
-        at io.rsocket.core.RSocketRequester.$r8$lambda$kDn7LIfo960b6cXO3SLu8QVkTAE(Unknown Source:0)
-        at io.rsocket.core.RSocketRequester$$ExternalSyntheticLambda2.accept(Unknown Source:4)
-        at reactor.core.publisher.LambdaSubscriber.onNext(LambdaSubscriber.java:160)
-        at io.rsocket.core.ClientServerInputMultiplexer$InternalDuplexConnection.onNext(ClientServerInputMultiplexer.java:248)
-        at io.rsocket.core.ClientServerInputMultiplexer.onNext(ClientServerInputMultiplexer.java:129)
-        at io.rsocket.core.ClientServerInputMultiplexer.onNext(ClientServerInputMultiplexer.java:48)
-        at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:120)
-        at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:365)
-        at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:401)
-        at reactor.netty.http.client.HttpClientOperations.onInboundNext(HttpClientOperations.java:707)
-        at reactor.netty.http.client.WebsocketClientOperations.onInboundNext(WebsocketClientOperations.java:161)
-        at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:94)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
-        at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
-        at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:324)
-        at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:296)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
-        at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
-        at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
-        at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
-        at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
-        at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
-        at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:719)
-        at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
-        at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
-        at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
-        at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
-        at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-        at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-        at java.lang.Thread.run(Thread.java:764)
-        Suppressed: java.lang.Exception: #block terminated with an error
-        at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99)
-        at reactor.core.publisher.Mono.block(Mono.java:1703)
-        at com.rsockettester.MainActivity$connect$1$1.invokeSuspend(MainActivity.kt:86)
-        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
-        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
-        at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
-        at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:738)
-        at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
-        at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
-```
 
 Here is the controller code, used on the back-end:
 ```
