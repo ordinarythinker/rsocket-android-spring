@@ -31,7 +31,7 @@ class MainController {
 }
 ```
 
-The code is used to connect from Android, using is the following:
+The code, used to connect from Android, is the following:
 ```
     private fun getPayload(route: String, message: String): Payload {
         val metadata = ByteBufAllocator.DEFAULT.compositeBuffer()
